@@ -137,7 +137,7 @@ melted <- melt(interestingData, id=c("subject", "activity"))
 # rows, and everything else (...) in the columns, aggregated using the mean
 # function, and we write the data out to a file in the working directory:
 
-summaryData <- dcast(melted, subject + activity ~ ..., mean)
+tidyData <- dcast(melted, subject + activity ~ ..., mean)
 
-write.table(summaryData, "results-table.txt", row.names = FALSE)
+write.table(tidyData, "tidy-data.txt", row.names = FALSE)
 
