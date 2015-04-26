@@ -21,7 +21,7 @@ library(reshape2)
 # are in single column files, we can use the scan function to read these into 
 # a vector.
 
-# Note that we don't need to load the "Intertial Signals" data, since it provides
+# Note that we don't need to load the "Inertial Signals" data, since it provides
 # the raw data from which the other data is derived.  As per the instructions,
 # we only care about the mean and standard deviation data in the derived data set.
 
@@ -94,7 +94,10 @@ interestingData <- mutate(interestingData, activity = activityNames)
 # original data set.  
 # 
 # We'll start by cleaning up these names a little bit, removing hyphens and 
-# parentheses.  We'll also prepend the first two column  names, "subject" and 
+# parentheses and replacing some abbreviations. Also remove duplicate "body" 
+# from some variable names.
+
+# We'll also prepend the first two column  names, "subject" and 
 # "activity" to keep things simple:
 
 columnNames <- c("subject", "activity", interestingVariables$name)
@@ -102,9 +105,13 @@ columnNames <- c("subject", "activity", interestingVariables$name)
 columnNames <- sub("mean()", "Mean", columnNames, fixed = TRUE)
 columnNames <- sub("std()", "Std", columnNames, fixed = TRUE)
 columnNames <- gsub("-", "", columnNames, fixed = TRUE)
+columnNames <- gsub("Acc", "Acceleration", columnNames)
+columnNames <- gsub("Mag", "Magnitude", columnNames)
+columnNames <- sub("^t", "time", columnNames)
+columnNames <- sub("^f", "frequency", columnNames)
+columnNames <- sub("BodyBody", "Body", columnNames)
 
-# Now apply these descriptive variable names to the columns, skipping the first 
-# two (subject and activity):
+# Now apply these cleaned-up variable names to the columns:
 
 colnames(interestingData) <- columnNames
 
@@ -128,7 +135,9 @@ melted <- melt(interestingData, id=c("subject", "activity"))
 
 # And we now cast the data into the form we want, subjects and activities in the
 # rows, and everything else (...) in the columns, aggregated using the mean
-# function:
+# function, and we write the data out to a file in the working directory:
 
 summaryData <- dcast(melted, subject + activity ~ ..., mean)
+
+write.table(summaryData, "results-table.txt", row.names = FALSE)
 
