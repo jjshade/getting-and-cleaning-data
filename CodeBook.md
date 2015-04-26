@@ -10,14 +10,14 @@ Human Activity Recognition Using Smartphones Data Set.
 Further details of the study design and the data set providing the basis for this work can be
 found here:
 
-[http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones]
+http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
 
 I won't duplicate the full details of the original data capture here, however key point are:
 
-* 30 volunteers ("subjects") in the age range 19-48
-* 6 activities - WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING
+* There were 30 volunteers ("subjects") in the age range 19-48
+* The volunteers carried out 6 activities - WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING
 
-All carried out while wearing a smartphone on their waist.
+all done while wearing a smartphone on their waist.
 
 Feature Selection (modified from the information provided by the original study)
 --------------------------------------------------------------------------------
@@ -73,9 +73,15 @@ Finally, where we had several observations for each subject and activity, the av
 was taken to produce the final tidy data set, hence in the data dictionary below, we have both
 means of means and means of standard deviations.
 
-
 Data Dictionary
 ---------------
+
+The data set contains 180 rows - 6 activities for each of 30 volunteers.
+
+In addition to the subject and activity, there are 66 variables provided on each row.
+
+These are described in the table below:
+
 
 Number | Variable Name | Description
 ------ | ------------- | -----------
