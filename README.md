@@ -1,8 +1,12 @@
 Getting and Cleaning Data - Course Project 
 ==========================================
 
-The purpose of this project is to provide a tidy data set that meets the principles
-of tidy data, as taught on the Coursera "Getting and Cleaning Data" course.
+The purpose of this project is to tidy the "Human Activity Recognition Using Smartphones" data set
+to remove fields we don't wish to use and summarise that which remains into a format
+ready for further analysis.
+
+The tidied data set should meets the principles of tidy data, as taught on the 
+Coursera "Getting and Cleaning Data" course.
 
 This repository contains an R script:
 
@@ -19,6 +23,19 @@ How to use run_analysis.R
 The code itself contains many comments describing what it is doing at each step.
 
 However some important notes are provided here.
+
+### Code Dependencies ###
+
+The code is dependent on the following R libraries:
+
+* dplyr
+* reshape2
+
+These packages should be installed (if they aren't already) before running the script using the 
+following commands:
+
+* install.packages("dplyr")
+* install.packages("reshape2")
 
 ### Install Test Data ###
 
